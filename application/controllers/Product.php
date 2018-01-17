@@ -1,0 +1,112 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Product extends CI_Controller {
+	public function index()
+	{ 
+		$this->load->view('home');
+	}
+	public function getProduct($top='hot',$_top='new')
+	{
+		$this->session;
+		$this->load->model("Product_model");
+		$data['product_hot']=$this->Product_model->getProduct($top);
+		$data['product_new']=$this->Product_model->getProduct($_top);
+		if (isset($_SESSION['cart']) && $_SESSION['cart']!=NULL) {
+			$data['cart']=$_SESSION['cart'];
+		}
+		$this->load->view('home',$data);
+	}
+	public function infoProduct($id)
+	{ 
+		$this->load->model('Product_model');
+		$this->session;
+		$data['info']=$this->Product_model->getInfoProduct($id);
+		if (isset($_SESSION['cart']) && $_SESSION['cart']!=NULL) {
+			$data['cart']=$_SESSION['cart'];
+		}
+		$this->load->view('info_product.php',$data);
+	}
+	
+	public function insert_Cart($id)
+	{
+		$this->session;
+		$this->load->model('Product_model');
+		$all=$this->Product_model->getAllProduct();
+		$data['product']=$all;
+		$newproduct=[];
+		// var_dump($data);
+		foreach ($data as $key => $value) {
+			// var_dump($value);
+			foreach ($value as $key => $val) {
+				// var_dump($val);
+				$newproduct[$val->id]=$val;
+			}
+		}
+		// echo '<pre>';
+		// var_dump($newproduct);
+		if (!isset($_SESSION['cart']) || $_SESSION['cart']==NULL) {
+			$newproduct[$id]->quantity=1;
+			$_SESSION['cart'][$id]=$newproduct[$id];
+		}
+		else{
+			if(array_key_exists($id, $_SESSION['cart'])){
+				$_SESSION['cart'][$id]->quantity=$_SESSION['cart'][$id]->quantity+1;
+			}
+			else{
+				$newproduct[$id]->quantity=1;
+				$_SESSION['cart'][$id]=$newproduct[$id];
+			}
+		}
+		$data['cart']=$_SESSION['cart'];
+		$this->load->view('cart',$data);
+		redirect('Product/Cart');
+	}
+	public function Cart()
+	{
+		$this->session;
+		$this->load->model('Product_model');
+		if (isset($_SESSION['cart']) && $_SESSION['cart']!=NULL) {
+			$data['cart']=$_SESSION['cart'];
+			$this->load->view('cart',$data);
+		}
+		else{
+			$this->load->view('cart');
+		}
+		
+	}
+	public function delete_Product($id)
+	{
+		$this->session;
+		$this->load->model('Product_model');
+		unset($_SESSION['cart'][$id]);
+		redirect('Product/Cart');
+	}
+	public function update()
+	{
+		$this->load->model('Product_model');
+		$this->session;
+		// var_dump($_POST["quantity"]);
+		foreach ($_POST["quantity"] as $key => $value) {
+			$_SESSION['cart'][$key]->quantity=$value;
+			var_dump($value);
+			if($value<=0){
+				unset($_SESSION['cart'][$key]);
+			}
+		}
+
+		redirect('Product/Cart');
+	}
+	public function checkouts()
+	{
+		$this->load->view('order');
+	}
+	public function product_nav($id)
+	{
+		$this->load->model('Product_model');
+		$data['product']=$this->Product_model->product_nav($id);
+		$data['danhmuc']=$this->Product_model->danhmuc();
+		$this->load->view('product_nav',$data);
+	}
+}
+?>

@@ -1,0 +1,45 @@
+.product_hot{
+	height: 525px;
+	margin-top: 10px;
+	
+}
+.product_hot .container{
+	height: 100%;
+	
+}
+.product_hot .row h3,.product_hot .row hr{
+	text-align: center;
+}
+.product_hot .row hr{
+	width: 40%;
+	height: 2px;
+
+}
+.product_hot .hot{
+	float: left;
+	margin-left: 10px;
+}
+.product_hot .hot img{
+	width: 215px;
+	height: 250px;
+}
+
+.product_hot .hot p{
+	width: 100%;
+	text-align: center;
+	color: #a3a3a3;
+}
+.product_hot .hot a{
+	text-decoration: none;
+}
+.product_hot .hot b{
+	margin-left: 80px;
+}
+.see_more{
+	text-align: center;
+	margin-top: 50px;
+}
+.see_more a{
+	text-decoration: none;
+}
+

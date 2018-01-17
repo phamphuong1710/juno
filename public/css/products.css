@@ -1,0 +1,13 @@
+.info_img{
+	float: left;
+	width: 60%;
+}
+.info_img img{
+	width: 600px;
+	height: 600px;
+	margin-left: 120px;
+}
+.buy{
+	float: left;
+	width: 40%;
+}

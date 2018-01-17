@@ -1,0 +1,12 @@
+.adv{
+	width: 100%;
+	height: 500px;
+	background-color: #a12326;
+}
+.adv .container{
+	width: 1225px;
+}
+.adv .container img{
+	width: 1200px;
+	height: 500px;
+}

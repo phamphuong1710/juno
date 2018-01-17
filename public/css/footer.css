@@ -1,0 +1,120 @@
+.footer_nav{
+	clear: both;
+	height: 160px;
+}
+.footer_nav .navbar-nav{																																																																																																								
+    width: 100%;
+    background-color: #e5e5e5;
+    padding-left: 330px;
+    height: 160px;
+}
+.nav ul, .nav li, .nav li a{
+	height: 100%;
+}
+.nav>li>a>img {
+    max-width: none;
+    border: 1px solid #9d9d9d;
+    border-radius: 77px;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+
+ }
+ .nav>li>a>img:hover{
+	border: 1px solid black;
+
+ }
+ .nav>li>a>p{
+ 	padding-left: 23px;
+ 	padding-top: 20px;
+ }
+
+.phone_footer{
+	color: red;
+	font-size: 26px;
+}
+.info{
+	height: 110px;
+}
+.info .container{
+	width: 1290px;
+	height: 100px;
+}
+.info .row{
+	padding-top: 15px;
+}
+.info .glyphicon{
+	color: #e43932;
+    border: 3px solid;
+    padding: 6px;
+    border-radius: 50%;
+    font-size: 18px;
+    margin-top: 15px;
+}
+.info strong{
+	font-size: 13px;
+}
+.more_info{
+	font-size: 13px;
+}
+.form-group label{
+	font-size: 13px;
+}
+.navbar-social{
+	list-style-type: none;
+}
+.navbar-social li{
+	float: left;
+	padding: 10px;
+}
+.navbar-social li>a{
+	font-size: 40px;
+	color: #3c3c3c;
+}
+.navbar-social li>a .fa-facebook-official:hover{
+	color: #4267b2;
+}
+.navbar-social li>a .fa-instagram:hover{
+	color: #9c6c52;
+}
+.navbar-social li>a .fa-youtube:hover{
+	color: #ff0000;
+}
+.top{
+	background-color: #f4f4f4;
+	height: 50px;
+	width: 100%;
+}
+.top ul{
+	list-style-type: none;
+	height: 100%;
+}
+.top ul>li{
+	float: left;
+	padding-left: 13px;
+}
+.top ul>li>a{
+	font-size: small;
+	color: #666;
+	text-decoration: none;
+	padding-right: 5px;
+}
+.top_link{
+	border-right: 1px solid;
+	padding-right: 5px;
+}
+.top ul>li>a:hover{
+	color: black;
+}
+.par_footer{
+	background-color: #e5e5e5;
+	width: 100%;
+	height: 100px;
+}
+.par_footer .container{
+	width: 1230px;
+}
+.par_footer p{
+	font-size: small;
+	padding-top: 15px;
+}

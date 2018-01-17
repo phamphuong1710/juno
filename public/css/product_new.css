@@ -1,0 +1,45 @@
+.product_new{
+	height: 1200px;
+	margin-top: 10px;
+	
+}
+.product_new .container{
+	height: 100%;
+	
+}
+.product_new .row h3,.product_hot .new hr{
+	text-align: center;
+}
+.product_new .row hr{
+	width: 40%;
+	height: 2px;
+
+}
+.product_new .new{
+	float: left;
+	margin-left: 10px;
+}
+.product_new .new img{
+	width: 215px;
+	height: 250px;
+}
+
+.product_new .new p{
+	width: 100%;
+	text-align: center;
+	color: #a3a3a3;
+}
+.product_new .new a{
+	text-decoration: none;
+}
+.product_new .new b{
+	margin-left: 80px;
+}
+.see_more{
+	text-align: center;
+	margin-top: 50px;
+}
+.see_more a{
+	text-decoration: none;
+}
+

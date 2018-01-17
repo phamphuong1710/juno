@@ -1,0 +1,35 @@
+.info_cart{
+	
+}
+.product_cart{
+	height: 90px;
+	}
+.info_cart .product_cart{
+	border: 1px solid ;
+}
+.info_cart .product_cart img{
+	width: 80px;
+}
+.info_cart .product_cart input{
+    width: 50px;
+}
+.info_cart .product_cart .col-lg-2 {
+	margin-top: 32px;
+}
+.info_cart .product_cart .col-lg-6 ,.info_cart .product_cart .col-lg-1 {
+	margin-top: 32px;
+} 
+.info_cart .btn-danger{
+	margin-left: 500px;
+    width: 20%;
+}
+.info_cart .toltal_price{
+	margin-bottom: 50px;
+}
+.info_cart .pay a{
+	padding: 15px 65px;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+}
