@@ -20,7 +20,7 @@
 				
 			</div>	
 			<div class="form_content">
-				<form action="" method="POST" role="form">
+				<form action="<?php echo base_url().'Product/hoadon' ?>" method="POST" role="form">
 					<h3>Thông tin giao hàng</h3>
 					<input type="text" class="form-control input-lg"  placeholder="Họ và tên" name="name">
 					<input type="email" class="form-control input-lg email" placeholder="Email" name="email" >

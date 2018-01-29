@@ -94,7 +94,7 @@
 				</div>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-md-offset-3">
-				<input type="file" name="upload" class="btn btn-danger">
+				<input type="file" name="anhsanpham" class="btn btn-danger">
 			</div>
 			
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-md-offset-3">

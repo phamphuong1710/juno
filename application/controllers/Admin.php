@@ -43,18 +43,40 @@
 		{
 			$this->load->model("Admin_model");
 
-				if($_FILES['upload']['error'] >0){
-					echo "upload file bị lỗi";
-					redirect('Admin/form_add');
+			if($_FILES['anhsanpham']['error'] >0){
+				echo "upload file bị lỗi";
+				redirect('Admin/form_add');
+			}
+			else{
+				if($_FILES['anhsanpham']['type'] == "image/jpeg" || $_FILES['anhsanpham']['type'] =="image/png"){
+					move_uploaded_file($_FILES['anhsanpham']['tmp_name'],'./image/'.$_FILES['anhsanpham']['name']);
+					$img=base_url().'image/'.$_FILES['anhsanpham']['name'];
+					echo "<img src= '$img' >";
+					// var_dump($_FILES['anhsanpham']);
 				}
-				else{
-					if($_FILES['upload']['type'] == "image/jpeg" || $_FILES['upload']['type'] =="image/png"){
-						move_uploaded_file($_FILES['upload']['tmp_name'],'./image/'.$_FILES['upload']['name']);
-						$img=base_url().'image/'.$_FILES['upload']['name'];
-						echo "<img src= '$img' >";
-						var_dump($_FILES['upload']);
-					}
-				}
+			}
+			// $config['upload_path']          = './image/';
+   //          $config['allowed_types']        = 'gif|jpg|png';
+   //          $config['max_size']             = 100000000;
+            
+
+   //          $this->load->library('upload', $config);
+
+   //          if ( ! $this->upload->do_upload('anhsanpham'))
+   //          {
+   //                  $error = array('error' => $this->upload->display_errors());
+
+   //                  var_dump($error);
+   //                  die;
+   //          }
+   //          else
+   //          {
+   //                  $data = array('upload_data' => $this->upload->data());
+
+   //                  // var_dump($data);die();
+   //                  $img=$data['upload_data']['file_name'];
+
+   //          }
 			$product=[
 				'tensanpham'=>$_POST['tensanpham'],
 				'masanpham'=>$_POST['masanpham'],

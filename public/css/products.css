@@ -7,7 +7,13 @@
 	height: 600px;
 	margin-left: 120px;
 }
+.information{
+	float: left;
+	margin-top: 100px;
+}
 .buy{
 	float: left;
 	width: 40%;
+	background: red;
+	color: white;
 }

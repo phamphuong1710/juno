@@ -55,7 +55,7 @@
 		<div class="container">
 			<ul>
 				<li class="menu">
-					<a href="<?php echo base_url().'Product/product_Nav/'.'2' ?>" class="dropbtn">Túi Sách</a>
+					<a href="<?php echo base_url().'Product/product_Nav/'.'1' ?>" class="dropbtn">Túi Sách</a>
 					<div class="menu-content">
 				      <a href="">Túi Cỡ Lớn</a>
 				      <a href="">Túi cỡ Trung</a>
@@ -65,7 +65,7 @@
 				    </div>
 				</li>
 				<li class="menu">
-					<a href="<?php echo base_url().'Product/product_Nav/'.'1'?>" class="dropbtn">Giày Cao Gót</a>
+					<a href="<?php echo base_url().'Product/product_Nav/'.'2'?>" class="dropbtn">Giày Cao Gót</a>
 					<div class="menu-content">
 					<a href="#">Cao 5cm</a>
 					<a href="#">Cao 7cm</a>

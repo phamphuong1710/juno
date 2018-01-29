@@ -108,5 +108,40 @@ class Product extends CI_Controller {
 		$data['danhmuc']=$this->Product_model->danhmuc();
 		$this->load->view('product_nav',$data);
 	}
+	public function hoadon()
+	{
+		$this->load->model('Product_model');
+		$this->session;
+		// var_dump($_SESSION['cart']);die();
+		$price=0;
+		foreach ($_SESSION['cart'] as $key => $value) {
+			$msp[]=$value->masanpham;
+			$soluong[]=$value->quantity;
+			$price=$price+$value->quantity*$value->giaban;
+		}
+		$info=[
+			'hoten'=>$_POST['name'],
+			'email'=>$_POST['email'],
+			'sodienthoai'=>$_POST['mobile'],
+			'diachi'=>$_POST['address'],
+			'tinh'=>$_POST['province'],
+			'quan/huyen'=>$_POST['county'],
+			'phuong/xa'=>$_POST['ward'],
+			'phuongthucthanhtoan'=>$_POST['pay'],
+			'mahoadon'=>time(),
+			'ngay'=>date('Y-m-d'),
+			'gio'=>date('H:m:s'),
+			];
+		$info_cart=[
+			'mahoadon'=>time(),
+			'masanpham'=>implode('-', $msp),
+			'soluong'=>implode('-', $soluong),
+			'tongtien'=>$price,
+				];
+		$this->Product_model->hoadon($info);
+		$this->Product_model->chitiethoadon($info_cart);
+		echo "BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG";
+	}
+
 }
 ?>

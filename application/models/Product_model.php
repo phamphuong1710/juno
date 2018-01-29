@@ -39,4 +39,12 @@ class Product_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function hoadon($info)
+	{
+		return $this->db->insert('hoadon',$info);
+	}
+	public function chitiethoadon($info)
+	{
+		return $this->db->insert('chitiethoadon',$info);
+	}
 }

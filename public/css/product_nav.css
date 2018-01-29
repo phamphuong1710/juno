@@ -22,10 +22,10 @@
 	text-align: center;
 	color: #a3a3a3;
 }
-..product_nav .product a{
+.product_nav .product a{
 	text-decoration: none;
 }
-..product_nav .product b{
+.product_nav .product b{
 	margin-left: 80px;
 }
 
