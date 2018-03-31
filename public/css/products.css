@@ -1,19 +1,117 @@
 .info_img{
 	float: left;
-	width: 60%;
+	width: 75%;
 }
-.info_img img{
-	width: 600px;
-	height: 600px;
+.info_img .img{
+	width: 700px;
+	height: 700px;
 	margin-left: 120px;
 }
-.information{
+.info_img ul {
+	list-style-type: none;
+	margin-left: 120px;
+
+}
+.info_img ul li{
 	float: left;
+	width: 9%;
+	border: 1px solid #dedede;
+	margin-right: 5px;
+}
+.info_img ul li img{
+	width: 100%;
+}
+.infomation{
+	float: left;
+	width: 25%;
+}
+.info_price{
+	width: 100%;
 	margin-top: 100px;
 }
-.buy{
+.info_price table tr{
+	border: 5px solid #fff;
+}
+.info_price table td{
+	padding:10px;
+	background-color: #f6f6f6;
+}
+.info_price ul{
+	list-style-type: none;
+}
+.info_price ul li{
 	float: left;
-	width: 40%;
-	background: red;
+	margin-right: 3px;
+	border: 1px solid #dedede;
+	width: 15%;
+}
+.info_price ul li img{
+	width: 100%;
+}
+.buy{
+	clear: both;
+	float: left;
+	/*width: 20%;*/
+	background: #d61c1f;
+	padding: 20px;
 	color: white;
+	text-align: center;
+	margin-top: 50px;
+	border-radius: 50%;
+}
+.buy a{
+	color: #fff;
+}
+.buy a:hover{
+	text-decoration: none;
+	color: #fff;
+}
+.buy a span{
+	font-size: 24px;
+}
+.more_product{
+	clear: both;
+	width: 100%;
+	margin-left: 50px;
+	padding:50px;
+	
+
+}
+.more_product .more{
+	float: left;
+	width: 18%;
+	position: relative;
+    display: inline-block;
+}
+.more_product .more a {
+	width: 100%;
+	text-decoration: none;
+}
+.more_product .more a img{
+	width: 100%;
+}
+.more_product .more a p {
+	text-align: center;
+}
+.more_product .more b{
+	margin-left: 80px;
+}
+.more_product .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    background-color: #dedede;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    margin-left: 50px;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    font-size: 10px;
+}
+.more_product .more:hover .tooltiptext {
+    visibility: visible;
 }

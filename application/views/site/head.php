@@ -12,6 +12,8 @@
 	<link rel="stylesheet" href="<?php echo base_url().'public/css/products.css' ?>">
 	<link rel="stylesheet" href="<?php echo base_url().'public/css/info_cart.css' ?>">
 	<link rel="stylesheet" href="<?php echo base_url().'public/css/product_nav.css' ?>">
+	<link rel="stylesheet" href="<?php echo base_url().'public/css/more_product.css' ?>">
+	<script type="text/javascript" src="<?php echo base_url().'public/js/image.js' ?>"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

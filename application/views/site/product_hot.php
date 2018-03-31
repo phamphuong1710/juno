@@ -11,11 +11,15 @@
 				<?php foreach ($product_hot as $key => $value) {?>
 					<div class="hot">
 						<a href="<?php echo base_url().'Product/infoProduct/'.$value->id ?>">
-							<img src="<?php echo $value->anhsanpham ?>" alt="">	
+							<img src="<?php echo base_url().'image/'.$value->masanpham.'/'.$value->anhsanpham ?>" alt="">	
+							<span class="tooltiptext">
+								<?php echo $value->tensanpham ?>
+							</span>
 							<p><?php echo $value->masanpham; ?></p>
+							<b><?php echo number_format($value->giaban); ?><sup>đ</sup></b>
 						</a>
 						
-						<b><?php echo number_format($value->giaban); ?><sup>đ</sup></b>
+						
 					</div>
 				<?php } ?>
 			</div>

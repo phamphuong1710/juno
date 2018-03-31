@@ -4,103 +4,109 @@
 	class Admin extends CI_Controller {
 		public function index()
 		{
-			$this->load->view('admin/login/form_login.php');
+			$this->myAdmin();
 		}
 		public function myAdmin()
 		{	
 			
-			$this->load->view('admin/home_admin.php');
-
+			$this->load->view('admin/myAdmin.php');
 		}
 		public function form_add()
-		{
-			$this->load->view('admin/layouts/form_add.php');
-		}
-		public function login()
-		{  
-			
-			$this->load->model('Admin_model');
-			if ($_SERVER["REQUEST_METHOD"]==="POST"){
-				$name=$_POST['name'];
-				$password=$_POST['password'];
-				$user=new Admin_model();
-				$checkLogin=$user->checkLogin($name,$password);
-				if (!$checkLogin) {
-					$error="Đăng nhập lỗi, tài khoản học mật khẩu không đúng";
-					redirect('Admin/index');
-				}
-				else{
-					$this->session;
-					$_SESSION['username'] = $username;
-					$_SESSION['current_user'] = $checkLogin;
-					redirect('Admin/myAdmin');  
-			
-				}
+		{	
+			$this->session;
+			if(! $this->session->userdata('validated')){
+            	redirect('Login');
+        	}else{
+				$this->load->model('Admin_model');
+				$data['provider']=$this->Admin_model->getAllProvider();
+				$data['category']=$this->Admin_model->getAllCategory();
+				$this->load->view('admin/addProduct.php',$data);
 			}
 		}
+		
 
 		public function addProduct()
 		{
-			$this->load->model("Admin_model");
 
-			if($_FILES['anhsanpham']['error'] >0){
-				echo "upload file bị lỗi";
-				redirect('Admin/form_add');
-			}
-			else{
-				if($_FILES['anhsanpham']['type'] == "image/jpeg" || $_FILES['anhsanpham']['type'] =="image/png"){
-					move_uploaded_file($_FILES['anhsanpham']['tmp_name'],'./image/'.$_FILES['anhsanpham']['name']);
-					$img=base_url().'image/'.$_FILES['anhsanpham']['name'];
-					echo "<img src= '$img' >";
-					// var_dump($_FILES['anhsanpham']);
+				$this->load->model("Admin_model");
+				$img['masp']=$this->input->post('masanpham');
+				 $dir = "./image/";
+				 if (!is_dir($dir.$img['masp']))
+		        {
+		            mkdir($dir.$img['masp'].'/');
+		        } 
+				foreach ($_FILES['anhsanpham']['name'] as $key => $value) {
+					
+					$lenght= stripos($_FILES['anhsanpham']['name'][$key], "_") ;
+					$img['color']=substr($_FILES['anhsanpham']['name'][$key], 0,$lenght);
+						
+					$source_img = $_FILES['anhsanpham']['tmp_name'][$key];
+	        	 	$path_img = $dir.$img['masp'].'/'.$_FILES['anhsanpham']['name'][$key]; 
+	                move_uploaded_file($source_img,$path_img);
+	                echo $img['name']=$_FILES['anhsanpham']['name'][$key];
+	                $img['type']=$_FILES['anhsanpham']['type'][$key];
+	                ($key==0) ? $img['active']=1 && $anh=$img['name'] : $img['active']=0 ;
+	               $this->Admin_model->add_Image($img);
+	               	
+					
 				}
-			}
-			// $config['upload_path']          = './image/';
-   //          $config['allowed_types']        = 'gif|jpg|png';
-   //          $config['max_size']             = 100000000;
-            
+				foreach ($_FILES['image']['name'] as $key => $value) {
+					
+					$lenght= stripos($_FILES['image']['name'][$key], "_") ;
+					$img['color']=substr($_FILES['image']['name'][$key], 0,$lenght);
+						
+					$source_img = $_FILES['image']['tmp_name'][$key];
+	        	 	$path_img = $dir.$img['masp'].'/'.$_FILES['image']['name'][$key]; 
+	                move_uploaded_file($source_img,$path_img);
+	                echo $img['name']=$_FILES['image']['name'][$key];
+	                $img['type']=$_FILES['image']['type'][$key];
+	                $img['active']=0 ;
+	               $this->Admin_model->add_Image($img);
+	               	
+					
+				}
 
-   //          $this->load->library('upload', $config);
 
-   //          if ( ! $this->upload->do_upload('anhsanpham'))
-   //          {
-   //                  $error = array('error' => $this->upload->display_errors());
 
-   //                  var_dump($error);
-   //                  die;
-   //          }
-   //          else
-   //          {
-   //                  $data = array('upload_data' => $this->upload->data());
-
-   //                  // var_dump($data);die();
-   //                  $img=$data['upload_data']['file_name'];
-
-   //          }
-			$product=[
-				'tensanpham'=>$_POST['tensanpham'],
-				'masanpham'=>$_POST['masanpham'],
-				'id_danhmucsanpham'=>$_POST['id_danhmucsanpham'],
-				'gianhap'=>$_POST['gianhap'],
-				'kieudang'=>$_POST['kieudang'],
-				'mausac'=>$_POST['mausac'],
-				'chatlieu'=>$_POST['chatlieu'],
-				'kichco'=>$_POST['kichco'],
-				'idnhacungcap'=>$_POST['idnhacungcap'],
-				'giaban'=>$_POST['giaban'],
-				'top'=>isset($_POST['top']) ? $_POST['top'] : '',
-				'anhsanpham'=>$img
-			];
-			$this->Admin_model->add_Product($product);
-			redirect('Admin/listProduct');
+				$product=[
+					'tensanpham'=>$_POST['tensanpham'],
+					'masanpham'=>$_POST['masanpham'],
+					'id_danhmucsanpham'=>$_POST['id_danhmucsanpham'],
+					'gianhap'=>$_POST['gianhap'],
+					'kieudang'=>$_POST['kieudang'],
+					'mausac'=>$_POST['mausac'],
+					'chatlieu'=>$_POST['chatlieu'],
+					'kichco'=>$_POST['kichco'],
+					'idnhacungcap'=>$_POST['idnhacungcap'],
+					'giaban'=>$_POST['giaban'],
+					'top'=>isset($_POST['top']) ? $_POST['top'] : '',
+					'anhsanpham'=>$anh,
+				];
+				$this->Admin_model->add_Product($product);
+				redirect('Admin/listProduct');
+			
 		}
 		public function listProduct()
 		{	
-			
+			if(! $this->session->userdata('validated')){
+            	redirect('login');
+        	}else{
 				$this->load->model('Admin_model');
 				$all=$this->Admin_model->getAllProduct();
+				$category=$this->Admin_model->getAllCategory();
+				foreach ($all as $key => $value) {
+					foreach ($category as $k => $val) {
+						if($value->id_danhmucsanpham==$val->id){
+							$value->id_danhmucsanpham=$val->tendanhmuc;
+						}
+					}
+				}
+				// echo "<pre>";
+				// var_dump($all);
+				// die();
 				$data['product']=$all;
 				$this->load->view('admin/list_product',$data);
+			}
 		}
 		public function deleteProduct($id)
 		{
@@ -118,17 +124,48 @@
 		public function updateProduct($id)
 		{
 			$this->load->model('Admin_model');
-			if($_FILES['upload']['error'] >0){
-					echo "upload file bị lỗi";
-					redirect('Admin/form_add');
-				}
-				else{
-					if($_FILES['upload']['type'] == "image/jpeg" || $_FILES['upload']['type'] =="image/png"){
-						move_uploaded_file($_FILES['upload']['tmp_name'],'./image/'.$_FILES['upload']['name']);
-						$img=base_url().'image/'.$_FILES['upload']['name'];
-						echo "<img src= '$img' >";
-						var_dump($_FILES['upload']);
-					}
+			$product=$this->Admin_model->getProduct($id);
+			$msp=$product[0]->masanpham;
+			$image=$this->Admin_model->getImage($msp);
+			// echo "<pre>";
+			// var_dump($image);die();
+			$img['masp']=$this->input->post('masanpham');
+			 $dir = "./image/";
+			 if (!is_dir($dir.$img['masp']))
+            {
+                mkdir($dir.$img['masp'].'/');
+            } 
+ 
+			foreach ($_FILES['upload']['name'] as $key => $value) {
+				
+				$lenght= stripos($_FILES['upload']['name'][$key], "_") ;
+				$img['color']=substr($_FILES['upload']['name'][$key], 0,$lenght);
+				$source_img = $_FILES['upload']['tmp_name'][$key];
+        	 	$path_img = $dir.$img['masp'].'/'.$_FILES['upload']['name'][$key]; 
+                move_uploaded_file($source_img,$path_img);
+                echo $img['name']=$_FILES['upload']['name'][$key];
+                $img['type']=$_FILES['upload']['type'][$key];
+                ($key==0) ? $img['active']=1 && $anh=$img['name'] : $img['active']=0 ;
+               	$this->Admin_model->updateImage($img,$image[0]->id);
+               	$image[0]->id++;
+
+				
+			}
+			foreach ($_FILES['image']['name'] as $key => $value) {
+					
+					$lenght= stripos($_FILES['image']['name'][$key], "_") ;
+					$img['color']=substr($_FILES['image']['name'][$key], 0,$lenght);
+						
+					$source_img = $_FILES['image']['tmp_name'][$key];
+	        	 	$path_img = $dir.$img['masp'].'/'.$_FILES['image']['name'][$key]; 
+	                move_uploaded_file($source_img,$path_img);
+	                echo $img['name']=$_FILES['image']['name'][$key];
+	                $img['type']=$_FILES['image']['type'][$key];
+	                $img['active']=0 ;
+	               $this->Admin_model->updateImage($img,$image[6]->id);
+	               $image[6]->id++;
+	               	
+					
 				}
 			$product=[
 				'tensanpham'=>$_POST['tensanpham'],
@@ -142,7 +179,7 @@
 				'idnhacungcap'=>$_POST['idnhacungcap'],
 				'giaban'=>$_POST['giaban'],
 				'top'=>isset($_POST['top']) ? $_POST['top'] : '',
-				'anhsanpham'=>$img
+				'anhsanpham'=>$anh,
 			];
 
 			$this->Admin_model->updateProduct($product,$id);

@@ -11,7 +11,10 @@
 				<?php foreach ($product_new as $key => $value) {?>
 					<div class="new">
 						<a href="<?php echo base_url().'Product/infoProduct/'.$value->id ?>">
-							<img src="<?php echo $value->anhsanpham ?>" alt="">	
+							<img src="<?php echo base_url().'image/'.$value->masanpham.'/'.$value->anhsanpham ?>" alt="">
+							<span class="tooltiptext">
+								<?php echo $value->tensanpham ?>
+							</span>	
 							<p><?php echo $value->masanpham; ?></p>
 						</a>
 						

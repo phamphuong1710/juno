@@ -1,7 +1,9 @@
- <?php 	$this->load->view('admin/layouts/header_admin.php') ?>
-<?php $this->load->view('admin/layouts/side_bar.php');  ?> 
+<?php   
+	$this->load->view('admin/head_left.php');
+    $this->load->view('admin/left_panel.php');
+ ?>
 <div class="container">
-	<div class="col-md-7 col-md-offset-3">
+	<div class="col-md-9 ">
 		<form action="<?php echo base_url().'Admin/updateProduct/'.$product[0]->id ?>" method="POST" role="form" enctype="multipart/form-data" class="form-horizontal">
 			<legend>Thông tin Sản Phẩm</legend>
 		
@@ -94,9 +96,11 @@
 				</div>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-md-offset-3">
-				<input type="file" name="upload" class="btn btn-danger">
+				<input type="file" name="upload[]" class="btn btn-danger" multiple="true">
 			</div>
-			
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-md-offset-3">
+				<input type="file" name="image[]" class="btn btn-danger" multiple="true">
+			</div>
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-md-offset-3">
 				<button type="submit" class="btn btn-primary" name="submit">ADD</button>
 			</div>
@@ -104,5 +108,13 @@
 		</form>
 	</div>
 </div>
+<script src="<?php echo base_url().'public/assets/js/vendor/jquery-2.1.4.min.js' ?>"></script>
+    <script src="<?php echo base_url().'public/assets/js/popper.min.js' ?>"></script>
+    <script src="<?php echo base_url().'public/assets/js/plugins.js' ?>"></script>
+    <script src="<?php echo base_url().'public/assets/js/main.js' ?>"></script>
+
+
+</body>
+</html>
 </body>
 </html>

@@ -42,4 +42,26 @@
 .see_more a{
 	text-decoration: none;
 }
-
+.top_new .new{
+	position: relative;
+    display: inline-block;
+}
+.top_new .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    background-color: #dedede;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    margin-left: 50px;
+    
+     /*Position the tooltip*/ 
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    font-size: 10px;
+}
+.top_new .new:hover .tooltiptext {
+    visibility: visible;
+}

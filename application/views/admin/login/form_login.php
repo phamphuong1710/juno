@@ -1,89 +1,79 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Log in</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="<?php echo base_url().'public/admin/bower_components/bootstrap/dist/css/bootstrap.min.css' ?>">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url().'public/admin/bower_components/font-awesome/css/font-awesome.min.css' ?>">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href=".<?php echo base_url().'public/admin/bower_components/Ionicons/css/ionicons.min.css' ?>">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url().'public/admin/dist/css/AdminLTE.min.css' ?>">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="<?php echo base_url().'public/admin/plugins/iCheck/square/blue.css' ?>">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sufee Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="<?php echo base_url().'public/assets/css/normalize.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/assets/css/bootstrap.min.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/assets/css/font-awesome.min.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/assets/css/themify-icons.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/assets/css/flag-icon.min.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/assets/css/cs-skin-elastic.css' ?>">
+    <!-- <link rel="stylesheet" href="<?php echo base_url().'public/assets/css/bootstrap-select.less' ?>"> -->
+    <link rel="stylesheet" href="<?php echo base_url().'public/assets/scss/style.css' ?>">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href=""><b>Admin</b>LTE</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+<body class="bg-dark">
 
-    <form action="<?php echo base_url().'Admin/login' ?>" method="post">
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Email" name="name">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <!-- <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
-        </div> -->
-        <!-- /.col -->
-        <div class="col-xs-4 col-xs-offset-4">
-          <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="index.html">
+                        <img class="align-content" src="images/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="login-form">
+                   
+                    <form action="<?php echo base_url().'Login/process' ?>" method="POST">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" placeholder="Username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password" name="password">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                            <label class="pull-right">
+                                <a href="#">Forgotten Password?</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                        
+                        <div class="register-link m-t-15 text-center">
+                            <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <!-- /.col -->
-      </div>
-    </form>
+    </div>
 
-   <!--  <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-    </div> -->
-    <!-- /.social-auth-links -->
 
-    <!-- <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a> -->
-  </div>
-  <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+    <script src="<?php echo base_url().'public/assets/js/vendor/jquery-2.1.4.min.js' ?>"></script>
+    <script src="<?php echo base_url().'public/assets/js/popper.min.js' ?>"></script>
+    <script src="<?php echo base_url().'public/assets/js/plugins.js' ?>"></script>
+    <script src="<?php echo base_url().'public/assets/js/main.js' ?>"></script>
 
-<!-- jQuery 3 -->
-<script src="<?php echo base_url().'public/admin/bower_components/jquery/dist/jquery.min.js' ?>"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="<?php echo base_url().'public/admin/bower_components/bootstrap/dist/js/bootstrap.min.js' ?>"></script>
-<!-- iCheck -->
-<script src="<?php echo base_url().'plugins/iCheck/icheck.min.js' ?>"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-</script>
+
 </body>
 </html>

@@ -15,8 +15,9 @@
 	height: 2px;
 
 }
-.product_hot .hot{
+.product_hot.top_hot .hot{
 	float: left;
+	width: 18%;
 	margin-left: 10px;
 }
 .product_hot .hot img{
@@ -42,4 +43,26 @@
 .see_more a{
 	text-decoration: none;
 }
-
+.top_hot .hot{
+	position: relative;
+    display: inline-block;
+}
+.top_hot .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    background-color: #dedede;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    margin-left: 50px;
+    
+     /*Position the tooltip*/ 
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    font-size: 10px;
+}
+.top_hot .hot:hover .tooltiptext {
+    visibility: visible;
+}

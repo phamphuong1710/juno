@@ -2,18 +2,21 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_model extends CI_Model {
-	public function checkLogin($user,$password)
-	{
-		$this->db->select('*');
-		$this->db->from('user');
-		$this->db->where('username', $user);
-		$this->db->where('password', $password);
-		$query = $this->db->get();
-		return $query->result();
-	}
 	public function add_Product($product)
 	{
 		return $this->db->insert("sanpham",$product);
+	}
+	public function add_Image($image)
+	{
+		return $this->db->insert("anhsp",$image);
+	}
+	public function getImage($msp)
+	{
+		$this->db->select('*');
+		$this->db->from('anhsp ');
+		$this->db->where('masp',$msp);
+		$query = $this->db->get();
+		return $query->result();
 	}
 	public function getAllProduct()
 	{
@@ -36,10 +39,16 @@ class Admin_model extends CI_Model {
 	{
 		return $this->db->update('sanpham',$product,['id'=>$id]);
 	}
+	public function updateImage($img,$id)
+	{
+		return $this->db->update('anhsp',$img,['id'=>$id]);
+	}
 	public function getAllProvider()
 	{
-		$query=$this->db->get('nhacungcap');
-		 return $query->result();
+		$this->db->select('*');
+		$this->db->from('nhacungcap');
+		$query = $this->db->get();
+		return $query->result();
 	}
 	
 	public function getProvider($id)
@@ -62,9 +71,11 @@ class Admin_model extends CI_Model {
 	{
 		return $this->db->insert("nhacungcap",$provider);
 	}
-	public function getAllCategory($id)
+	public function getAllCategory()
 	{
-		$query=$this->db->get('danhmuc');
+		$this->db->select('*');
+		$this->db->from('danhmuc');
+		$query=$this->db->get();
 		return $query->result();
 	}
 }

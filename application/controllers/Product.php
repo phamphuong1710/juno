@@ -21,7 +21,40 @@ class Product extends CI_Controller {
 	{ 
 		$this->load->model('Product_model');
 		$this->session;
+		// echo "<pre>";
 		$data['info']=$this->Product_model->getInfoProduct($id);
+		$msp=$data['info'][0]->masanpham;
+		
+		$id_danhmuc=$data['info'][0]->id_danhmucsanpham;
+		$product=$this->Product_model->product_nav($id_danhmuc);
+		$tol=count($product);
+		for ($i=0; $i <$tol ; $i++) { 
+			if ($product[$i]->id!=$id) {
+				$data['more'][]=$product[$i];
+				if (count($data['more'])>5) {
+					$i=$tol;
+				}
+			}
+		}
+		$data['img']=$this->Product_model->getImage($msp);
+		// var_dump($data['more']);
+		// die();
+		$i=6;
+		$j=1;
+
+		foreach ($data['img'] as $key => $value) {
+			if ($key<$i) {
+				$data['img'.$j][]=$data['img'][$key];	
+			}
+			else{
+				$i=$i+6;
+				$j++;
+				$data['img'.$j][]=$data['img'][$key];
+			}
+		}
+		$data['j']=$j;
+		// var_dump($data);
+		
 		if (isset($_SESSION['cart']) && $_SESSION['cart']!=NULL) {
 			$data['cart']=$_SESSION['cart'];
 		}
@@ -142,6 +175,13 @@ class Product extends CI_Controller {
 		$this->Product_model->chitiethoadon($info_cart);
 		echo "BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG";
 	}
+	// public function more_product($id)
+	// {	
+	// 	echo "<pre>";
+	// 	$this->load->model('Product_model');
+	// 	$product=$this->Product_model->getInfoProduct($id);
+	// 	var_dump($product);
+	// }
 
 }
 ?>

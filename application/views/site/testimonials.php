@@ -18,6 +18,7 @@
 			</div>
 		</div>
 	</div>
+	
 </div>
 <div class="address_store">
 	<div class="store">

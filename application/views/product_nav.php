@@ -8,7 +8,7 @@
 		<?php foreach ($product as $key => $value) {?>
 			<div class="product">
 				<a href="<?php echo base_url().'Product/infoProduct/'.$value->id ?>">
-					<img src="<?php echo $value->anhsanpham ?>" alt="">	
+					<img src="<?php echo base_url().'image/'.$value->masanpham.'/'.$value->anhsanpham ?>" alt="">	
 					<p><?php echo $value->masanpham; ?></p>
 				</a>
 				
